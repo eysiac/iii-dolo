@@ -30,19 +30,6 @@ body {
   100% { transform: translateY(110vh); opacity: 0; }
 }
 
-/* GIF SIDES */
-.side-gif {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 130px;
-  opacity: 0.75;
-  pointer-events: none;
-}
-
-.left-gif { left: 10px; }
-.right-gif { right: 10px; }
-
 .page {
   min-height: 100vh;
   display: flex;
