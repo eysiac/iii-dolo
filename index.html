@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>for iya 🌷</title>
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<div class="petal-container" id="petals"></div>
+
+<!-- GIFS SIDE -->
+<img src="left.gif" class="side-gif left-gif">
+<img src="right.gif" class="side-gif right-gif">
+
+<audio id="bgMusic" src="iii.mp3" loop></audio>
+
+<div class="page">
+  <div class="card">
+
+    <!-- PIN -->
+    <div id="pinPage">
+
+      <div class="top-flowers">🌸 🌷 🌸</div>
+
+      <h1 class="title">hey iya 🌷</h1>
+      <p class="sub">enter the PIN to open something cute</p>
+
+      <div class="pin-row">
+        <div class="pin-box" id="b0"></div>
+        <div class="pin-box" id="b1"></div>
+        <div class="pin-box" id="b2"></div>
+        <div class="pin-box" id="b3"></div>
+      </div>
+
+      <div class="keypad">
+        <button class="btn" data-num="1">1</button>
+        <button class="btn" data-num="2">2</button>
+        <button class="btn" data-num="3">3</button>
+        <button class="btn" data-num="4">4</button>
+        <button class="btn" data-num="5">5</button>
+        <button class="btn" data-num="6">6</button>
+        <button class="btn" data-num="7">7</button>
+        <button class="btn" data-num="8">8</button>
+        <button class="btn" data-num="9">9</button>
+        <button class="btn" id="del">⌫</button>
+        <button class="btn" data-num="0">0</button>
+        <button class="btn" id="enter">✓</button>
+      </div>
+
+      <p class="hint">hint: the day you made me smile(first day niyo ng immersion dito)🌸</p>
+
+      <p class="error" id="error"></p>
+      
+
+    </div>
+
+    <!-- MESSAGE -->
+    <div id="msgPage" class="hidden">
+      <div class="top-flowers">🌸 🌷 🌸</div>
+      <div class="message" id="message"></div>
+      <button class="next hidden" id="nextBtn">next 🌷</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
