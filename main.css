@@ -30,6 +30,8 @@ body {
   100% { transform: translateY(110vh); opacity: 0; }
 }
 
+
+
 .page {
   min-height: 100vh;
   display: flex;
@@ -151,4 +153,98 @@ body {
   font-size: 0.75rem;
   color: #f48fb1;
   opacity: 0.8;
+}
+
+#envelopePage {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#envelopePage.show {
+  display: flex;
+}
+
+.envelope-wrap {
+  text-align: center;
+}
+
+.open-text {
+  color: #c2185b;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.tap-text {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #f48fb1;
+}
+
+.envelope {
+  position: relative;
+  width: 220px;
+  height: 140px;
+  background: #f8bbd0;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.envelope:hover {
+  transform: scale(1.03);
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f48fb1;
+  clip-path: polygon(0 0, 50% 55%, 100% 0);
+  transform-origin: top;
+  transition: transform 0.8s ease;
+  z-index: 1; /* babaan from 2 → 1 */
+}
+
+.letter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  bottom: 0;
+  transition: transform 0.8s ease;
+  z-index: 3; /* dagdag na ito */
+}
+
+.letter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  bottom: 0;
+  transition: transform 0.8s ease;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open .letter {
+  transform: translateY(-40px);
+}
+
+@keyframes bloom {
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+  60%  { opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.2); opacity: 0; }
 }
