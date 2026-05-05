@@ -41,7 +41,7 @@ const messages = [
   "kasi kung hindi, baka magka ilangan tayo dito sa bahay",
   "lalo na't tayo tayo lang din magsasama sa iisang bahay ng 3days.",
   "I want to be honest with you, iya.",
-  "I've really enjoyed getting to know you(hindi naman lahat, pero Im taking a risk and ready akong kilalanin ka ng sobra).",
+  "I've really enjoyed getting to know you(i dont know a lot about you. but i'll always love the idea of knowing you more.).",
   "And I've found myself developing feelings for you.",
   "I've been trying to keep these feelings to myself for several days na.",
   "hindi lang 'to basta infatuation feelings lang.",
