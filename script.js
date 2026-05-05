@@ -57,13 +57,13 @@ const messages = [
   "I specially like the way you smile. (˶˃ ᵕ ˂˶)",
   "everytime na nakikita kita na naka ngiti",
   "I've got this feeling na super super gaan sa pakiramdam, lalo na pag nakikita kita (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ",
-  "I really, really really like you, iya ε(´｡•᎑•`)っ 💕",
+  "I really really like you, iya ε(´｡•᎑•`)っ 💕",
   "So ngayon, you don't have to respond right away or at all if you're not comfortable with it.",
   "Take all the time you need to think about it, and I understand if you don't feel the same way, iya.",
   "That's completely okay with me, and I'll respect whatever decision you make.",
   "I'd rather keep things comfortable between us than make things complicated.",
   "whenever you want to talk about it, or if you have any questions, just let me know.",
-  "that's all iya! thankyou, goodluck sa acads mo and take care always! ^^"
+  "that's all iya! thankyou, goodluck sa acads mo and take care always! /•᷅‎‎•᷄\੭"
 ];
 
 const SPECIAL_INDEX = messages.indexOf("I really, really really like you, iya");
@@ -133,6 +133,10 @@ function type(text, cb) {
 // ─── FLOW ──────────────────────────────────────────────────────────────────
 
 function next() {
+  updateCounter();
+  updateHearts();
+  checkGlow();
+
   if (index < messages.length) {
     type(messages[index], () => {
       if (index === SPECIAL_INDEX) specialAnimation();
@@ -146,6 +150,7 @@ function next() {
 document.getElementById("nextBtn").onclick = () => {
   document.getElementById("nextBtn").classList.add("hidden");
   index++;
+  updateBgShift();
   next();
 };
 
@@ -253,6 +258,7 @@ function start() {
   const envelopePage = document.getElementById("envelopePage");
   envelopePage.classList.remove("hidden");
   envelopePage.classList.add("show");
+  initHearts();
 }
 
 const envelope = document.getElementById("envelope");
@@ -309,3 +315,138 @@ document.addEventListener("touchstart", (e) => {
     setTimeout(() => el.remove(), 800);
   }
 }, { passive: true });
+
+// ─── BACKGROUND COLOR SHIFT ────────────────────────────────────────────────
+
+const bgColors = [
+  "#fff0f5", // soft pink (default)
+  "#f3e8ff", // lavender
+  "#ffe8f0", // blush
+  "#fff0e8", // peach
+  "#e8f4ff", // sky blue
+  "#f0ffe8", // mint
+];
+
+function updateBgShift() {
+  const progress = index / messages.length;
+  const colorIndex = Math.floor(progress * (bgColors.length - 1));
+  const nextIndex = Math.min(colorIndex + 1, bgColors.length - 1);
+  const t = (progress * (bgColors.length - 1)) - colorIndex;
+
+  const from = hexToRgb(bgColors[colorIndex]);
+  const to = hexToRgb(bgColors[nextIndex]);
+
+  const r = Math.round(from.r + (to.r - from.r) * t);
+  const g = Math.round(from.g + (to.g - from.g) * t);
+  const b = Math.round(from.b + (to.b - from.b) * t);
+
+  document.body.style.background = `linear-gradient(145deg, rgb(${r},${g},${b}), #fce4ec, #f8d7e8)`;
+}
+
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : { r: 255, g: 240, b: 245 };
+}
+
+// ─── STARRY NIGHT MODE ─────────────────────────────────────────────────────
+
+function checkNightMode() {
+  const hour = new Date().getHours();
+  const isNight = hour >= 19 || hour < 6; // 7pm to 6am
+
+  if (!isNight) return;
+
+  document.body.classList.add("night-mode");
+
+  const starContainer = document.createElement("div");
+  starContainer.id = "stars";
+  starContainer.style.cssText = `
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  `;
+  document.body.appendChild(starContainer);
+
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement("div");
+    const size = Math.random() * 3 + 1;
+    star.style.cssText = `
+      position: absolute;
+      left: ${Math.random() * 100}vw;
+      top: ${Math.random() * 100}vh;
+      width: ${size}px;
+      height: ${size}px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle ${Math.random() * 3 + 2}s ease-in-out infinite;
+      animation-delay: ${Math.random() * 3}s;
+      opacity: 0;
+    `;
+    starContainer.appendChild(star);
+  }
+}
+
+checkNightMode();
+
+// ─── PROGRESS HEARTS ───────────────────────────────────────────────────────
+
+const HEART_COUNT = 10;
+
+function initHearts() {
+  const bar = document.getElementById("heartsBar");
+  bar.innerHTML = "";
+  for (let i = 0; i < HEART_COUNT; i++) {
+    const h = document.createElement("span");
+    h.classList.add("heart-item");
+    h.innerText = "🌸";
+    h.id = "heart-" + i;
+    bar.appendChild(h);
+  }
+}
+
+function updateHearts() {
+  const filled = Math.round((index / messages.length) * HEART_COUNT);
+  for (let i = 0; i < HEART_COUNT; i++) {
+    const h = document.getElementById("heart-" + i);
+    if (!h) continue;
+    if (i < filled) {
+      h.classList.add("filled");
+      h.innerText = "❤️";
+    } else {
+      h.classList.remove("filled");
+      h.innerText = "🌸";
+    }
+  }
+}
+
+// ─── MESSAGE COUNTER ───────────────────────────────────────────────────────
+
+function updateCounter() {
+  const counter = document.getElementById("msgCounter");
+  if (counter) {
+    counter.innerText = `${index + 1} / ${messages.length} 💌`;
+  }
+}
+
+// ─── GLOWING TEXT ──────────────────────────────────────────────────────────
+
+const GLOW_INDEXES = [
+  messages.indexOf("I really, really really like you, iya"),
+  messages.indexOf("like you're so prettyyyyyyy and cuteeeeee. ^^"),
+  messages.indexOf("I specially like the way you smile. ^^"),
+  messages.indexOf("and nakilala din kita."),
+];
+
+function checkGlow() {
+  const msg = document.getElementById("message");
+  if (GLOW_INDEXES.includes(index)) {
+    msg.classList.add("glow");
+  } else {
+    msg.classList.remove("glow");
+  }
+}
