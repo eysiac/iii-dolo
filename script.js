@@ -34,7 +34,7 @@ const messages = [
   "magustuhan mo.",
   "ganon siya for me hahahhaha",
   "so tuloy na natin",
-  "nung time na pag pasok ko na bahay, yun din yung time na lumabas ka ng kwarto mo",
+  "nung time na pag pasok ko sa bahay, yun din yung time na lumabas ka ng kwarto mo",
   "na starstruck talaga akoooo, like napasabi ako ng 'gago ang ganda' hahaha ",
   "sounds cringe or jejemon, pero yun talaga yung na f-feel ko nung time na yun hahaha",
   "kinapalan ko muka ko para kausapin kayo",
