@@ -60,6 +60,10 @@ const messages = [
   "everytime na nakikita kita na naka ngiti",
   "I've got this feeling na super super gaan sa pakiramdam, lalo na pag nakikita kita (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ",
   "I really really like you, iya ε(´｡•᎑•`)っ 💕",
+  "'di ko to sinasabi kasi lasing ako or kung ano, seryoso ako iya.",
+  "kagaya ng nahiling ko sa ig hahaha",
+  "I will wait for the time that you develop your feelings for me out of nowhere.",
+  "with or without chance, Im still here for u iya.
   "So ngayon, you don't have to respond right away or at all if you're not comfortable with it.",
   "Take all the time you need to think about it, and I understand if you don't feel the same way, iya.",
   "That's completely okay with me, and I'll respect whatever decision you make.",
